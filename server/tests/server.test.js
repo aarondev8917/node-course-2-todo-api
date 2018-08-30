@@ -8,7 +8,7 @@ const {User} = require('./../models/user');
 const {todos, populateTodos, users, populateUsers} = require('./seed/seed');
 
 beforeEach(populateUsers);
- beforeEach(populateTodos);
+beforeEach(populateTodos);
 
 describe('POST /todos' ,() => {
   it('should create a new todo', (done) => {
@@ -202,7 +202,7 @@ describe('PATCH /todos/:id', () => {
   it('should not update the todo created by other user', (done) => {
     var hexId = todos[0]._id.toHexString();
     var text = 'This should be the new text';
-    
+
     request(app)
     .patch(`/todos/${hexId}`)
     .set('x-auth', users[1].tokens[0].token)
